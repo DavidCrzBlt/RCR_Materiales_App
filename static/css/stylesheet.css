@@ -1,0 +1,29 @@
+.logo{
+    width: 300px;
+}
+
+.logo img{
+    max-width: 100px;
+    width: 100%;
+}
+.logo-footer img{
+    max-width: 100px;
+    width: 100%;
+}
+
+.img,iframe{
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+.marcas{
+    width: 350px;
+}
+
+@media screen and (max-width:506px) {
+    .card-text{
+        display: none;
+    }
+}
+
