@@ -27,4 +27,4 @@ def privacidad():
     return render_template('/privacidad.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
