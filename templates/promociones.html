@@ -3,22 +3,16 @@
 {% block title %} Promociones {% endblock %}
 
 {% block body %}
-<h1>Promociones de agosto</h1>
+<h1>Promociones del mes de agosto</h1>
 <hr class="featurette-divider">
 
 <div class="row featurette">
     <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">Promociones de Promo Truper <span class="text-muted">¡Te van a encantar!</span></h2>
-        <button class="bg-primary">Descarga el "Promo Truper"</button>
+        <h2 class="featurette-heading fw-normal lh-1">PROMO TRUPER AGOSTO <span class="text-muted">¡Te va a encantar!</span></h2>
+        <button type="button" class="btn btn-primary btn-lg" href="{{url_for('static',filename='documents/PromoTruperAgosto.pdf')}}">Descarga el "PROMOTRUPER"</button>
     </div>
     <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-            height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-            preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-        </svg>
-
+        <img src="{{url_for('static',filename='images_promociones/PromoTruper.jpg')}}" alt="PromoTruper Mensual">
     </div>
 </div>
 
