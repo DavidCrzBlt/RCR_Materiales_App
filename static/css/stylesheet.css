@@ -6,6 +6,21 @@
     max-width: 100px;
     width: 100%;
 }
+
+.f-img{
+    width: 500px;
+}
+
+.f-img img{
+    max-width: 100px;
+    width: 100%;
+}
+
+div img{
+    max-width: 100px;
+    width: 100%;
+}
+
 .logo-footer img{
     max-width: 100px;
     width: 100%;
