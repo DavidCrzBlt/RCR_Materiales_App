@@ -41,7 +41,9 @@ def contacto():
         email = request.form["email"]
         mensaje = request.form["mensaje"]
         datos_contacto = "Nombre: "+ nombre+ "\nEmpresa: " + empresa + "\nTeléfono: " + telefono + "\nCorreo electrónico: " + email + "\nMensaje: " + mensaje
-        msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=config.MAIL_USERNAME)
+        #msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=config.MAIL_USERNAME)
+        msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=os.environ['MAIL_USERNAME'])
+        mail.send(msg)
         mail.send(msg)
         return redirect("/datosEnviados")
     else:
