@@ -1,14 +1,18 @@
 from flask import Flask, render_template,request,redirect
 from flask_mail import Mail,Message
-import config
+#import config
+import os
 
 app = Flask(__name__)
 
 app.config['MAIL_SERVER'] = 'mail.rcrmateriales.com.mx'
 app.config['MAIL_PORT'] = 26
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
+#app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
+#app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
+app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
+app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
+
 
 mail = Mail(app)
 
