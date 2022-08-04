@@ -1,5 +1,7 @@
 from flask import Flask, render_template,request,redirect
 from flask_mail import Mail,Message
+from boto.s3.connection import S3Connection
+
 #import config
 import os
 
@@ -10,8 +12,10 @@ app.config['MAIL_PORT'] = 26
 app.config['MAIL_USE_SSL'] = False
 #app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
 #app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
-app.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
-app.config['MAIL_PASSWORD'] = os.environ['MAIL_PASSWORD']
+MAIL_USERNAME = os.environ['MAIL_USERNAME']
+MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+app.config['MAIL_USERNAME'] = MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
 
 
 mail = Mail(app)
@@ -42,8 +46,7 @@ def contacto():
         mensaje = request.form["mensaje"]
         datos_contacto = "Nombre: "+ nombre+ "\nEmpresa: " + empresa + "\nTeléfono: " + telefono + "\nCorreo electrónico: " + email + "\nMensaje: " + mensaje
         #msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=config.MAIL_USERNAME)
-        msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=os.environ['MAIL_USERNAME'])
-        mail.send(msg)
+        msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=MAIL_USERNAME)
         mail.send(msg)
         return redirect("/datosEnviados")
     else:
