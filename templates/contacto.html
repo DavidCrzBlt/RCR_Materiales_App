@@ -5,12 +5,12 @@
 {% block body %}
 <br>
 <div class="container row">
-    <div class="col-6 offset-3 text-center rounded bg-primary">
-        <form method="post" action="email.php" class="p-3">
+    <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 text-center rounded bg-warning">
+        <form id="contactForm" method="post" class="p-3">
             <legend>Solicita tu presupuesto</legend>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo"
-                    aria-describedby="basic-addon1" id="nombre" name="nombre" pattern="[A-Za-zW+]{3,}" required>
+                    aria-describedby="basic-addon1" id="nombre" name="nombre" required>
             </div>
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Empresa" aria-label="Empresa"
@@ -46,7 +46,7 @@
             Sábados de 9:00 a 13:30
         </p>
     </section>
-    <section class="text-center col-md-6">
+    <section class="text-center col-12 col-md-6">
         <h2 class="display-2 fs-2">Ubicación</h2>
         <br>
     

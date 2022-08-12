@@ -3,5 +3,30 @@
 {% block title %} Promociones {% endblock %}
 
 {% block body %}
-<h1>Hola, esta es la página de promociones</h1>
+<h1>Promociones del mes de agosto</h1>
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7">
+        <h2 class="featurette-heading fw-normal lh-1">PROMO TRUPER AGOSTO <span class="text-muted">¡Te va a encantar!</span></h2>
+        <a type="button" class="btn btn-warning btn-lg fw-bold" href="{{url_for('static',filename='documents/PromoTruperAgosto.pdf')}}" target="_blank" rel="noopener noreferrer">Descarga el PROMOTRUPER</a>
+    </div>
+    <div class="col-md-5 promoimagenes">
+        <img src="{{url_for('static',filename='images_promociones/PromoTruper.jpg')}}" alt="PromoTruper Mensual">
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading fw-normal lh-1">Ofertas de verano</h2>
+        <p class="lead">Este mes tenemos descuentos en productos de plomería y de limpieza</p>
+        <a type="button" class="btn btn-warning btn-lg fw-bold" href="{{url_for('static',filename='documents/Promociones verano.pdf')}}" target="_blank" rel="noopener noreferrer">Consulta nuestras ofertas</a>
+    </div>
+    <div class="col-md-5 promoimagenes">
+        <img src="{{url_for('static',filename='images_promociones/PromoRCR.png')}}" alt="PromoRCR Mensual">
+    </div>
+</div>
+
 {% endblock %}
