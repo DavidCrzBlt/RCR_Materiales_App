@@ -48,13 +48,9 @@ def contacto():
         
         msg = Message(subject="Información de contacto",recipients=['rcrproyectos.admon@gmail.com'],body=datos_contacto,sender=MAIL_USERNAME)
         mail.send(msg)
-        return redirect("/datosEnviados")
+        return redirect("datosEnviados.html")
     else:
         return render_template('contacto.html')
-
-@app.route("/datosEnviados")
-def datosEnviados():
-    return render_template("datosEnviados.html")
 
 
 @app.route('/aviso_de_privacidad')
