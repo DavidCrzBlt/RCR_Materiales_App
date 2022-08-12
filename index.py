@@ -18,6 +18,9 @@ app.config['MAIL_USE_SSL'] = False
 MAIL_USERNAME = os.environ['MAIL_USERNAME']
 MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
 
+app.config['MAIL_USERNAME'] = MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
+
 mail = Mail(app)
 
 @app.route('/')
