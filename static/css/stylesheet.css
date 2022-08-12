@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.promotruper img{
+.promoimagenes img{
     max-width: 500px;
     width: 100%;
 }
@@ -24,7 +24,10 @@
 }
 
 .marcas{
-    width: 350px;
+    width: 300px;
+    max-width: 100%;
+    display: block;
+    margin: auto;
 }
 
 @media screen and (max-width:506px) {

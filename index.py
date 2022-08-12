@@ -1,11 +1,8 @@
 from flask import Flask, render_template,request,redirect,url_for
 from flask_mail import Mail,Message
-from boto.s3.connection import S3Connection
 from flask_fontawesome import FontAwesome
 
-#import config
-from database_connection import ids,products,prices
-from readBLOB import readBLOB
+# import config
 import os
 
 app = Flask(__name__)
@@ -29,13 +26,7 @@ def home():
 
 @app.route('/productos')
 def productos():
-    fpart = "static\\db_images\\"
-    tpart = ".png"
-
-    for x in ids:
-        total = fpart + str(ids[x-1]) + tpart
-        readBLOB(ids[x-1],total)
-    return render_template('productos.html',ids=ids,products=products,prices=prices)
+    return render_template('productos.html')
 
 @app.route('/promociones')
 def promociones():
