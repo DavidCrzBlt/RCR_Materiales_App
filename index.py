@@ -8,7 +8,7 @@ import os
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://syphkmrewwlkjo:aeb55fe714669b0bd500a138a49a2172b2d105918b05828f94a5699436567083@ec2-44-193-178-122.compute-1.amazonaws.com:5432/dbe61uips2p98l'
 
 fa = FontAwesome(app)
