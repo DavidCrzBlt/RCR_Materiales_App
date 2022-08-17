@@ -94,7 +94,7 @@ def privacidad():
     return render_template('privacidad.html')
 
 
-@app.route('/newData', methods=['GET', 'POST'])
+@app.route('/newData', methods=["GET","POST"])
 def newData():
     if request.method == 'POST':
         if not request.form['name'] or not request.form['city'] or not request.form['addr']:
