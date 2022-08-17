@@ -51,10 +51,9 @@ def __init__(self, name, city, addr, pin):
 def home():
     return render_template('home.html')
 
-
 @app.route('/productos')
 def productos():
-    return render_template('productos.html')
+    return render_template('productos.html',students = students.query.all())
 
 
 @app.route('/promociones')

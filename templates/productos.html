@@ -3,11 +3,6 @@
 {% block title %} Productos {% endblock %}
 
 {% block body %}
-<!-- <script type="text/javascript">
-    myids = {{ ids | tojson }};
-    myproducts = {{ products | tojson }};
-    myprices = {{ prices | tojson }};
-</script> -->
 <h1 class="text-center text-uppercase display-1">Catálogo de productos</h1>
 <form class="d-flex" role="search">
     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -15,7 +10,17 @@
 </form>
 <br>
 <div id="productos" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
-
+    {% for student in students %}
+    <div class="col">
+        <div class="card">
+            <img class="card-img-top" src="..." alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{ student.name }}</h5>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
 <br>
 <nav aria-label="...">
@@ -36,5 +41,5 @@
 {% endblock %}
 
 {% block script %}
-<!-- <script type="text/javascript" src="{{url_for('static',filename='js/app.js')}}"></script> -->
+
 {% endblock %}
