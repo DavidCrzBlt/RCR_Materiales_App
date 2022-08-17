@@ -2,8 +2,8 @@ from flask import Flask, render_template,request,redirect,url_for
 from flask_mail import Mail,Message
 from flask_fontawesome import FontAwesome
 
-# import config
-import os
+import config
+#import os
 
 app = Flask(__name__)
 fa = FontAwesome(app)
@@ -12,11 +12,11 @@ app.config['MAIL_SERVER'] = 'mail.rcrmateriales.com.mx'
 app.config['MAIL_PORT'] = 26
 app.config['MAIL_USE_SSL'] = False
 
-# MAIL_USERNAME = config.MAIL_USERNAME
-# MAIL_PASSWORD = config.MAIL_PASSWORD
+MAIL_USERNAME = config.MAIL_USERNAME
+MAIL_PASSWORD = config.MAIL_PASSWORD
 
-MAIL_USERNAME = os.environ['MAIL_USERNAME']
-MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+# MAIL_USERNAME = os.environ['MAIL_USERNAME']
+# MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
 
 app.config['MAIL_USERNAME'] = MAIL_USERNAME
 app.config['MAIL_PASSWORD'] = MAIL_PASSWORD
