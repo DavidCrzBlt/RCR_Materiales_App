@@ -96,13 +96,12 @@ def privacidad():
 
 @app.route('/newData', methods=["GET","POST"])
 def newData():
-    if request.method == 'POST':
-        if not request.form['name'] or not request.form['city'] or not request.form['addr']:
+    if request.method == "POST":
+        if not request.form["name"] or not request.form["city"] or not request.form["addr"]:
             flash('Please enter all the fields', 'error')
         else:
-            student = students(request.form['name'], request.form['city'],
-            request.form['addr'], request.form['pin'])
-
+            student = students(name = request.form["name"],city = request.form["city"], addr =
+            request.form["addr"],pin = request.form["pin"])
             db.session.add(student)
             db.session.commit()
 
