@@ -116,4 +116,5 @@ def pruebas():
     return render_template('pruebas.html',students = students.query.all())
 
 if __name__ == '__main__':
+    db.create_all()
     app.run()
