@@ -107,7 +107,7 @@ def newData():
             db.session.commit()
 
             flash('Record was successfully added')
-            return redirect(url_for('/pruebas'))
+            return redirect(url_for('pruebas'))
         
     return render_template('newData.html')
 
