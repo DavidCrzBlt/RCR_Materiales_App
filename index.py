@@ -9,6 +9,7 @@ import os
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://syphkmrewwlkjo:aeb55fe714669b0bd500a138a49a2172b2d105918b05828f94a5699436567083@ec2-44-193-178-122.compute-1.amazonaws.com:5432/dbe61uips2p98l'
 
 fa = FontAwesome(app)
 db = SQLAlchemy(app)
@@ -45,10 +46,6 @@ def __init__(self, name, city, addr, pin):
    self.addr = addr
    self.pin = pin
 
-
-db.create_all()
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -77,8 +74,7 @@ def contacto():
         telefono = request.form["telefono"]
         email = request.form["email"]
         mensaje = request.form["mensaje"]
-        datos_contacto = "Nombre: " + nombre + "\nEmpresa: " + empresa + "\nTeléfono: " + \
-            telefono + "\nCorreo electrónico: " + email + "\nMensaje: " + mensaje
+        datos_contacto = "Nombre: " + nombre + "\nEmpresa: " + empresa + "\nTeléfono: " + telefono + "\nCorreo electrónico: " + email + "\nMensaje: " + mensaje
 
         msg = Message(subject="Información de contacto", recipients=[
                       'rcrproyectos.admon@gmail.com'], body=datos_contacto, sender=MAIL_USERNAME)
@@ -111,7 +107,7 @@ def newData():
             db.session.commit()
 
             flash('Record was successfully added')
-            return redirect(url_for('show_all'))
+            return redirect(url_for('/pruebas'))
         
     return render_template('newData.html')
 
