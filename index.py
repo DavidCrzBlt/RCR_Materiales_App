@@ -1,3 +1,4 @@
+from enum import unique
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mail import Mail, Message
 from flask_fontawesome import FontAwesome
@@ -35,18 +36,18 @@ db = SQLAlchemy(app)
 
 class products(db.Model):
    id = db.Column('product_id', db.Integer, primary_key=True)
-   code = db.Column(db.String(200))
-   product_name = db.Column(db.String(200))
-   price = db.Column(db.Integer)
+   code = db.Column(db.String(50),unique=True)
+   product_name = db.Column(db.String(255))
+   category = db.Column(db.String(255))
+   price = db.Column(db.Numeric)
    discount = db.Column(db.Integer)
-   category = db.Column(db.String(200))
 
-def __init__(self, code, product_name, price,discount,category):
+def __init__(self,code,product_name,category,price,discount):
    self.code = code
    self.product_name = product_name
+   self.category = category
    self.price = price
    self.discount = discount
-   self.category = category
 
 @app.route('/')
 def home():
@@ -94,7 +95,7 @@ def privacidad():
 def newData():
     if request.method == "POST":
 
-        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount = request.form["discount"],category = request.form["category"])
+        product = products(code=request.form["code"],product_name=request.form["product_name"],category = request.form["category"],price=request.form["price"],discount = request.form["discount"])
 
         db.session.add(product)
         db.session.commit()
