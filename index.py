@@ -35,18 +35,18 @@ db = SQLAlchemy(app)
 
 class products(db.Model):
    id = db.Column('product_id', db.Integer, primary_key=True)
-   code = db.Column(db.String(50))
+   code = db.Column(db.String(200))
    product_name = db.Column(db.String(200))
    price = db.Column(db.Integer)
    discount = db.Column(db.Integer)
-   cat= db.Column(db.String(255))
+   category = db.Column(db.String(200))
 
-def __init__(self, code, product_name, price,discount,cat):
+def __init__(self, code, product_name, price,discount,category):
    self.code = code
    self.product_name = product_name
    self.price = price
    self.discount = discount
-   self.cat = cat
+   self.category = category
 
 @app.route('/')
 def home():
@@ -94,7 +94,7 @@ def privacidad():
 def newData():
     if request.method == "POST":
 
-        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount = request.form["discount"],cat = request.form["cat"])
+        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount = request.form["discount"],category = request.form["category"])
 
         db.session.add(product)
         db.session.commit()
