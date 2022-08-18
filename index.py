@@ -99,12 +99,12 @@ def privacidad():
 def newData():
     if request.method == "POST":
 
-        product = products(request.form["code"],request.form["product_name"],request.form["price"],request.form["discount"],request.form["category"])
+        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount=request.form["discount"],category=request.form["category"])
         db.session.add(product)
         db.session.commit()
 
         flash('Record was succesfullt added')
-        return redirect(url_for('pruebas'))
+        return redirect(url_for('productos'))
         
     return render_template('newData.html')
 

@@ -7,19 +7,13 @@
 <h3>Students - Flask SQLAlchemy example</h3>
 <hr />
 
-{%- for category, message in get_flashed_messages(with_categories = true) %}
-<div class="alert alert-danger">
-    {{ message }}
-</div>
-{%- endfor %}
-
 <form action="{{ request.path }}" method="post">
     
     <input type="number" name="code" placeholder="Code" /><br>
     <input type="text" name="product_name" placeholder="Product name" /><br>
     <input type="number" name="price" placeholder="Price" /><br>
     <input type="text" name="discount" placeholder="Discount" /><br>
-    <input type="number" name="category" placeholder="category" /><br>
+    <input type="text" name="category" placeholder="category" /><br>
     <input type="submit" value="Submit" />
 </form>
 
