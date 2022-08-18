@@ -33,19 +33,20 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 
 
-class students(db.Model):
-   id = db.Column('student_id', db.Integer, primary_key=True)
-   name = db.Column(db.String(100))
-   city = db.Column(db.String(50))
-   addr = db.Column(db.String(200))
-   pin = db.Column(db.String(10))
+class products(db.Model):
+   id = db.Column('product_id', db.Integer, primary_key=True)
+   code = db.Column(db.Integer)
+   product_name = db.Column(db.String(50))
+   price = db.Column(db.Integer)
+   discount = db.Column(db.String(10))
+   category = db.Column(db.String(10))
 
-
-def __init__(self, name, city, addr, pin):
-   self.name = name
-   self.city = city
-   self.addr = addr
-   self.pin = pin
+def __init__(self, code, product_name, price, discount, category):
+   self.code = code
+   self.product_name = product_name
+   self.price = price
+   self.discount = discount
+   self.category = category
 
 @app.route('/')
 def home():
@@ -53,7 +54,7 @@ def home():
 
 @app.route('/productos')
 def productos():
-    return render_template('productos.html',students = students.query.all())
+    return render_template('productos.html',products = products.query.all())
 
 
 @app.route('/promociones')
@@ -97,22 +98,15 @@ def privacidad():
 @app.route('/newData', methods=["GET","POST"])
 def newData():
     if request.method == "POST":
-        if not request.form["name"] or not request.form["city"] or not request.form["addr"]:
-            flash('Please enter all the fields', 'error')
-        else:
-            student = students(name = request.form["name"],city = request.form["city"], addr =
-            request.form["addr"],pin = request.form["pin"])
-            db.session.add(student)
-            db.session.commit()
 
-            flash('Record was successfully added')
-            return redirect(url_for('pruebas'))
+        product = products(request.form["code"],request.form["product_name"],request.form["price"],request.form["discount"],request.form["category"])
+        db.session.add(product)
+        db.session.commit()
+
+        flash('Record was succesfullt added')
+        return redirect(url_for('pruebas'))
         
     return render_template('newData.html')
-
-@app.route('/pruebas')
-def pruebas():
-    return render_template('pruebas.html',students = students.query.all())
 
 if __name__ == '__main__':
     db.create_all()
