@@ -39,14 +39,14 @@ class products(db.Model):
    product_name = db.Column(db.String(200))
    price = db.Column(db.Integer)
    discount = db.Column(db.Integer)
-   category = db.Column(db.String(255))
+   cat= db.Column(db.String(255))
 
-def __init__(self, code, product_name, price,discount,category):
+def __init__(self, code, product_name, price,discount,cat):
    self.code = code
    self.product_name = product_name
    self.price = price
    self.discount = discount
-   self.category = category
+   self.cat = cat
 
 @app.route('/')
 def home():
@@ -94,7 +94,7 @@ def privacidad():
 def newData():
     if request.method == "POST":
 
-        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount = request.form["discount"],category = request.form["category"])
+        product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount = request.form["discount"],cat = request.form["cat"])
 
         db.session.add(product)
         db.session.commit()
