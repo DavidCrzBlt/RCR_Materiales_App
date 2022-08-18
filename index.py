@@ -106,7 +106,7 @@ def newData():
 
 @app.route('/productos')
 def productos():
-    return render_template('productos.html',products = products.query.all())
+    return render_template('productos.html',productos = products.query.all())
 
 if __name__ == '__main__':
     db.create_all()
