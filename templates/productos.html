@@ -15,16 +15,17 @@
     {% for product in productos %}
     <div class="col">
         <div class="card">
-            <img class="card-img-top" src="..." alt="">
+            <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">{{ product.product_name }}</h5>
-                <p class="card-text"></p>
-                <ul>
-                    <li>{{ product.code }}</li>
-                    <li>{{ product.price }}</li>
-                    <li>{{ product.discount }}</li>
-                    <li>{{ product.category }}</li>
-                </ul>
+                <h5 class="card-title">{{product.code}} {{ product.product_name }}</h5>
+                <p class="card-text">
+                   $ {{ product.price }}
+                   <br>
+                   {% if product.discount > 0 %}
+                   <strong class="text-danger">{{product.discount}} %</strong>
+                   {% endif %}
+                </p>
+                <button class="btn btn-warning">Agregar al carrito</button>
             </div>
         </div>
     </div>
