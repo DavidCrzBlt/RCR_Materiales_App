@@ -36,10 +36,10 @@ db = SQLAlchemy(app)
 class products(db.Model):
    id = db.Column('product_id', db.Integer, primary_key=True)
    code = db.Column(db.Integer)
-   product_name = db.Column(db.String(50))
+   product_name = db.Column(db.String(200))
    price = db.Column(db.Integer)
-   discount = db.Column(db.String(10))
-   category = db.Column(db.String(10))
+   discount = db.Column(db.String(200))
+   category = db.Column(db.String(200))
 
 def __init__(self, code, product_name, price, discount, category):
    self.code = code
