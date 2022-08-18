@@ -52,11 +52,6 @@ def __init__(self, code, product_name, price, discount, category):
 def home():
     return render_template('home.html')
 
-@app.route('/productos')
-def productos():
-    return render_template('productos.html',products = products.query.all())
-
-
 @app.route('/promociones')
 def promociones():
     return render_template('promociones.html')
@@ -100,6 +95,7 @@ def newData():
     if request.method == "POST":
 
         product = products(code=request.form["code"],product_name=request.form["product_name"],price=request.form["price"],discount=request.form["discount"],category=request.form["category"])
+
         db.session.add(product)
         db.session.commit()
 
@@ -107,6 +103,10 @@ def newData():
         return redirect(url_for('productos'))
         
     return render_template('newData.html')
+
+@app.route('/productos')
+def productos():
+    return render_template('productos.html',products = products.query.all())
 
 if __name__ == '__main__':
     db.create_all()
