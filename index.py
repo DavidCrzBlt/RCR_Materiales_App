@@ -103,7 +103,7 @@ def newData():
         
     return render_template('newData.html')
 
-@app.route('/productos')
+@app.route('/productos',methods = ["GET","POST"])
 def productos():
     if request.method == "POST":
         return render_template('productos.html',productos = products.query.filter_by(category = request.form["search_category"]).all())
