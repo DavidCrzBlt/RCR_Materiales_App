@@ -22,7 +22,7 @@
                    $ {{ product.price }}
                    <br>
                    {% if product.discount > 0 %}
-                   <strong class="text-danger">{{product.discount}} %</strong>
+                   <strong class="text-danger">-{{product.discount}}% = {{ product.price - (product.price*product.discount) }}</strong>
                    {% endif %}
                 </p>
                 <button class="btn btn-warning">Agregar al carrito</button>
