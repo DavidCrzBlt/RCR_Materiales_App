@@ -19,10 +19,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{product.code}} {{ product.product_name }}</h5>
                 <p class="card-text">
-                   $ {{ product.price }}
+                   $ {{ "${:,.2f}".format(product.price) }}
                    <br>
                    {% if product.discount > 0 %}
-                   <strong class="text-danger">-{{product.discount}}% = {{ product.price - (product.price*product.discount) }}</strong>
+                   <strong class="text-danger">-{{product.discount}}% = {{ product.price - (product.price*product.discount/100) }}</strong>
                    {% endif %}
                 </p>
                 <button class="btn btn-warning">Agregar al carrito</button>
