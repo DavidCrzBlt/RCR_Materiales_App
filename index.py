@@ -108,7 +108,7 @@ def productos():
     if request.method == "POST":
         return render_template('productos.html',productos = products.query.filter_by(category = request.form["search_category"]).all())
     else:
-        return render_template('productos.html',productos = products.query.all())
+        return render_template('productos.html',productos = products.query.fetchone())
 
 if __name__ == '__main__':
     db.create_all()
