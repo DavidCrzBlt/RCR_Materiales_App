@@ -105,7 +105,10 @@ def newData():
 
 @app.route('/productos')
 def productos():
-    return render_template('productos.html',productos = products.query.all())
+    if request.method == "POST":
+        return render_template('productos.html',productos = products.query.filter_by(category = request.form["search_category"]).all())
+    else:
+        return render_template('productos.html',productos = products.query.all())
 
 if __name__ == '__main__':
     db.create_all()
