@@ -4,54 +4,65 @@
 
 {% block body %}
 <h1 class="text-center text-uppercase display-1">Catálogo de productos</h1>
-<form class="d-flex" role="search" method="post">
-    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_category">
-    <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
-<br>
-<button class="btn btn-danger"><a href="{{url_for('newData')}}">New data</a></button>
-<br>
-<div id="productos" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
-    {% for product in productos %}
-    <div class="col">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{ product.product_name }}</h5>
-                <p class="card-text">
-                    Código: {{product.code}}
-                    <br>
-                    {{ "${:,.2f}".format(product.price) }}
-                    <br>
-                    {% if product.discount > 0 %}
-                    <strong class="text-danger">
-                        -{{product.discount}}% =
-                        {{ "${:,.2f}".format(product.price-(product.price*product.discount/100))}}
-                    </strong>
-                    {% endif %}
-                </p>
-                <button class="btn btn-warning">Agregar al carrito</button>
+<div class="container">
+    <div class="row">   
+        <div class="col-3">
+            <button type="button" class="btn btn-outline-success">Seguridad industrial</button>
+            <button type="button" class="btn btn-outline-success">Maquinas eléctricas</button>
+            <button type="button" class="btn btn-outline-success">Herramientas manuales</button>
+        </div>
+        <div class="col-9">
+            <form class="d-flex" role="search" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search_category">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <br>
+            <button class="btn btn-danger"><a href="{{url_for('newData')}}">New data</a></button>
+            <br>
+            <div id="productos" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4">
+                {% for product in productos %}
+                <div class="col">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.product_name }}</h5>
+                            <p class="card-text">
+                                Código: {{product.code}}
+                                <br>
+                                {{ "${:,.2f}".format(product.price) }}
+                                <br>
+                                {% if product.discount > 0 %}
+                                <strong class="text-danger">
+                                    -{{product.discount}}% =
+                                    {{ "${:,.2f}".format(product.price-(product.price*product.discount/100))}}
+                                </strong>
+                                {% endif %}
+                            </p>
+                            <button class="btn btn-warning">Agregar al carrito</button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
+            <br>
+            <nav aria-label="...">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item" aria-current="page">
+                        <span class="page-link">2</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
-    {% endfor %}
 </div>
-<br>
-<nav aria-label="...">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-        </li>
-        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-        <li class="page-item" aria-current="page">
-            <span class="page-link">2</span>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
 {% endblock %}
 
 {% block script %}
